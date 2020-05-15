@@ -3,24 +3,28 @@ package testcases;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import support.TestBase;
+import utils.DataProviderClass;
+import utils.TestBase;
 import tasks.LoginTasks;
 
 public class LoginTestCase extends TestBase {
 
-    private WebDriver driver;
-    private LoginTasks login;
+    private WebDriver driver = getDriver();
+    private LoginTasks login = new LoginTasks(driver);
 
     @BeforeMethod
     public void setUp() {
-        driver = getDriver();
-        login = new LoginTasks(driver);
         driver.navigate().to("https://www.saucedemo.com/index.html");
     }
 
-    @Test
-    public void loginTest() {
-        login.efetuaLogin("standard_user", "secret_sauce");
+    @Test(dataProvider = "login-users", dataProviderClass = DataProviderClass.class)
+    public void loginTest(String user, String password) {
+        login.efetuaLogin(user, password);
+    }
+
+    @Test(dataProvider = "login-users-csv", dataProviderClass = DataProviderClass.class)
+    public void loginCsvTest(String user, String pass) {
+        login.efetuaLogin(user, pass);
     }
 
 }

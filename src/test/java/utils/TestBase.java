@@ -1,7 +1,10 @@
-package support;
+package utils;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterSuite;
+import support.DriverManagerFactory;
+import support.DriverType;
 
 public class TestBase extends DriverManagerFactory {
 
@@ -12,7 +15,8 @@ public class TestBase extends DriverManagerFactory {
         return driver;
     }
 
-    @AfterClass
+    //@AfterClass
+    @AfterSuite
     public void tearDown() {
         quitDriver();
     }
