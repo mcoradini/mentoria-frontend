@@ -1,10 +1,10 @@
 package utils;
 
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterSuite;
 import support.DriverManagerFactory;
 import support.DriverType;
+import support.ExtentTestManager;
 
 public class TestBase extends DriverManagerFactory {
 
@@ -15,10 +15,10 @@ public class TestBase extends DriverManagerFactory {
         return driver;
     }
 
-    //@AfterClass
     @AfterSuite
     public void tearDown() {
         quitDriver();
+        ExtentTestManager.endTest();
     }
 
 }

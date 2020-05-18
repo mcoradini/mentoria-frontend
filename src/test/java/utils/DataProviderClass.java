@@ -14,7 +14,11 @@ import java.util.Iterator;
 
 public class DataProviderClass {
 
-    private static final String csvFile = "src\\test\\java\\resources\\login.csv";
+    private static final String csvFile = "src"+File.separator+
+                                            "test"+File.separator+
+                                            "java"+File.separator+
+                                            "resources"+File.separator+
+                                            "login.csv";
 
     @DataProvider(name = "login-users")
     public static Object[][] contasLogin() {
@@ -23,6 +27,16 @@ public class DataProviderClass {
         return new Object[][] {{ "standard_user", password },
                                 {"locked_out_user", password}
                                 };
+    }
+
+    @DataProvider(name = "login-users2")
+    public static Object[][] contasLogin2() {
+        String password = "secret_sauce";
+
+        Object[][] data = {{ "standard_user", password },
+                {"locked_out_user", password}
+        };
+        return data;
     }
 
     @DataProvider(name = "login-users-csv")
