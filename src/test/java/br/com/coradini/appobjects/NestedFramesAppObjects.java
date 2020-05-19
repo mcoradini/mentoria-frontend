@@ -1,4 +1,4 @@
-package appobjects;
+package br.com.coradini.appobjects;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

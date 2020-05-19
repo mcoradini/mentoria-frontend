@@ -15,10 +15,10 @@ import java.util.Iterator;
 public class DataProviderClass {
 
     private static final String csvFile = "src"+File.separator+
-                                            "test"+File.separator+
+                                            "main"+File.separator+
                                             "java"+File.separator+
                                             "resources"+File.separator+
-                                            "login.csv";
+                                            "datapools/login.csv";
 
     @DataProvider(name = "login-users")
     public static Object[][] contasLogin() {

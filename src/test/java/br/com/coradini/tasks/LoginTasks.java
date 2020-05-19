@@ -1,14 +1,12 @@
-package tasks;
+package br.com.coradini.tasks;
 
-import appobjects.InventoryAppObjects;
-import appobjects.LoginAppObjects;
+import br.com.coradini.appobjects.InventoryAppObjects;
+import br.com.coradini.appobjects.LoginAppObjects;
 import com.aventstack.extentreports.Status;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import support.ExtentTestManager;
 import support.ScreenShot;
-
-import java.io.IOException;
 
 public class LoginTasks {
 

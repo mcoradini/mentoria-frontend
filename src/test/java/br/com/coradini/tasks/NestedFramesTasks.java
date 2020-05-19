@@ -1,6 +1,6 @@
-package tasks;
+package br.com.coradini.tasks;
 
-import appobjects.NestedFramesAppObjects;
+import br.com.coradini.appobjects.NestedFramesAppObjects;
 import com.aventstack.extentreports.Status;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
