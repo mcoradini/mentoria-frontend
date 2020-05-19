@@ -1,6 +1,11 @@
 package support;
 
 import org.apache.commons.codec.binary.Base64;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverException;
+import utils.TestBase;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -16,24 +21,19 @@ import java.io.IOException;
  * sem ser necessário levar consigo os arquivos JPG/PNG.
  *
  */
-public class ScreenShot {
+public class ScreenShot extends TestBase {
 
-	public static String captureToBase64() throws IOException {
-	    Rectangle screenSize = new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
-	    BufferedImage screenCapture = null;
+	private static WebDriver driver = getDriver();
+
+	public static String captureToBase64() {
 	    String base64Encoded = "";
 
 	    try {
-	        screenCapture = new Robot().createScreenCapture(screenSize);
-	        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-	        ImageIO.write(screenCapture, "jpg", baos);
-	        baos.flush();
-	        byte[] encodeBase64 = Base64.encodeBase64(baos.toByteArray());
-	        base64Encoded = new String(encodeBase64);
-	        baos.close();
-	    } catch (AWTException e) {
-	        e.getMessage();
-	    }
+			base64Encoded = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BASE64);
+	    } catch (WebDriverException e) {
+			System.out.println("Falha ao gerar screenshot...");
+	    	e.getMessage();
+		}
 
 	    return "data:image/jpeg;base64," + base64Encoded;
 	}

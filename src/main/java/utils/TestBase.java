@@ -8,10 +8,10 @@ import support.ExtentTestManager;
 
 public class TestBase extends DriverManagerFactory {
 
-    private WebDriver driver;
+    private static WebDriver driver;
 
-    public WebDriver getDriver() {
-        this.driver = setDriver(DriverType.CHROME);
+    public static WebDriver getDriver() {
+        driver = setDriver(DriverType.CHROME);
         return driver;
     }
 
