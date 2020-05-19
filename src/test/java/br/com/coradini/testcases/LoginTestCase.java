@@ -14,6 +14,7 @@ public class LoginTestCase extends TestBase {
     private WebDriver driver = getDriver();
     private LoginTasks login = new LoginTasks(driver);
 
+    //TODO Criar arquivo de config com as URLs para os sites.
     @BeforeMethod
     public void setUp(ITestResult result) {
         ExtentTestManager.startTest(result.getMethod().getMethodName());

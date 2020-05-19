@@ -29,11 +29,7 @@ public class LoginTasks {
                     "Deveria ter aparecido o botão do carrinho de compras após o login...");
             ExtentTestManager.log(Status.INFO, "Valor encontrado.", ScreenShot.captureToBase64());
         } catch (Exception e) {
-            try {
                 ExtentTestManager.log(Status.FAIL, "Valor nao foi encontrado...", ScreenShot.captureToBase64());
-            } catch (IOException io) {
-                e.getMessage();
-            }
         }
 
     }

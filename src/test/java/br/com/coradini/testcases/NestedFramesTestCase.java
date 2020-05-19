@@ -13,10 +13,11 @@ public class NestedFramesTestCase extends TestBase {
     private WebDriver driver = getDriver();;
     private NestedFramesTasks nestedFramesTasks = new NestedFramesTasks(driver);;
 
+    //TODO Criar arquivo de config com as URLs para os sites.
     @BeforeMethod
     public void setUp(ITestResult result) {
         ExtentTestManager.startTest(result.getMethod().getMethodName());
-        driver.get("http://the-internet.herokuapp.com/nested_frames");
+        driver.navigate().to("http://the-internet.herokuapp.com/nested_frames");
     }
 
     @Test

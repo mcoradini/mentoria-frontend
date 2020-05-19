@@ -12,7 +12,7 @@ public class IFrameTestCase extends TestBase {
     private WebDriver driver = getDriver();
     private IFrameTasks iFrameTasks = new IFrameTasks(driver);
 
-
+    //TODO Criar arquivo de config com as URLs para os sites.
     @BeforeMethod
     public void setUp(ITestResult result) {
         ExtentTestManager.startTest(result.getMethod().getMethodName());

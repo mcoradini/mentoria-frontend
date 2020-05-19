@@ -7,8 +7,6 @@ import org.testng.Assert;
 import support.ExtentTestManager;
 import support.ScreenShot;
 
-import java.io.IOException;
-
 public class IFrameTasks {
 
     private IFrameAppObjects iFrameAppObjects;
@@ -23,11 +21,7 @@ public class IFrameTasks {
             Assert.assertEquals(iFrameAppObjects.getIFrameTextfield().getText(), TXT_VALUE);
             ExtentTestManager.log(Status.INFO, "Valor encontrado.", ScreenShot.captureToBase64());
         } catch (Exception e) {
-            try {
                 ExtentTestManager.log(Status.FAIL, "Valor nao foi encontrado...", ScreenShot.captureToBase64());
-            } catch (IOException io) {
-                e.getMessage();
-            }
         }
     }
 

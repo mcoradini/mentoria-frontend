@@ -7,8 +7,6 @@ import org.testng.Assert;
 import support.ExtentTestManager;
 import support.ScreenShot;
 
-import java.io.IOException;
-
 public class NestedFramesTasks {
 
     private NestedFramesAppObjects nestedFramesAppObjects;
@@ -22,11 +20,7 @@ public class NestedFramesTasks {
             Assert.assertTrue(nestedFramesAppObjects.getLeftElements().getText().contentEquals("LEFT"));
             ExtentTestManager.log(Status.INFO, "Valor encontrado.", ScreenShot.captureToBase64());
         } catch (Exception e) {
-            try {
                 ExtentTestManager.log(Status.FAIL, "Valor nao foi encontrado...", ScreenShot.captureToBase64());
-            } catch (IOException io) {
-                e.getMessage();
-            }
         }
 
     }
@@ -36,11 +30,7 @@ public class NestedFramesTasks {
             Assert.assertTrue(nestedFramesAppObjects.getMiddleElement().getText().contentEquals("MIDDLE"));
             ExtentTestManager.log(Status.INFO, "Valor encontrado.", ScreenShot.captureToBase64());
         } catch (Exception e) {
-            try {
                 ExtentTestManager.log(Status.FAIL, "Valor nao foi encontrado...", ScreenShot.captureToBase64());
-            } catch (IOException io) {
-                e.getMessage();
-            }
         }
     }
 
