@@ -1,23 +1,24 @@
-package testcases;
+package br.com.coradini.testcases;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import support.ExtentTestManager;
+import utils.FileOperations;
 import utils.TestBase;
-import tasks.NestedFramesTasks;
+import br.com.coradini.tasks.NestedFramesTasks;
 
 public class NestedFramesTestCase extends TestBase {
 
-    private WebDriver driver = getDriver();;
-    private NestedFramesTasks nestedFramesTasks = new NestedFramesTasks(driver);;
+    private final WebDriver driver = getDriver();;
+    private final NestedFramesTasks nestedFramesTasks = new NestedFramesTasks(driver);
+    private final FileOperations fileOperations = new FileOperations();
 
-    //TODO Criar arquivo de config com as URLs para os sites.
     @BeforeMethod
     public void setUp(ITestResult result) {
         ExtentTestManager.startTest(result.getMethod().getMethodName());
-        driver.navigate().to("http://the-internet.herokuapp.com/nested_frames");
+        driver.navigate().to(fileOperations.readProperties("src/main/resources/properties/url.properties", "url.nested"));
     }
 
     @Test

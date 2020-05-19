@@ -1,4 +1,4 @@
-package testcases;
+package br.com.coradini.testcases;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
@@ -6,19 +6,20 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import utils.DataProviderClass;
 import support.ExtentTestManager;
+import utils.FileOperations;
 import utils.TestBase;
-import tasks.LoginTasks;
+import br.com.coradini.tasks.LoginTasks;
 
 public class LoginTestCase extends TestBase {
 
-    private WebDriver driver = getDriver();
-    private LoginTasks login = new LoginTasks(driver);
+    private final WebDriver driver = getDriver();
+    private final LoginTasks login = new LoginTasks(driver);
+    private final FileOperations fileOperations = new FileOperations();
 
-    //TODO Criar arquivo de config com as URLs para os sites.
     @BeforeMethod
     public void setUp(ITestResult result) {
         ExtentTestManager.startTest(result.getMethod().getMethodName());
-        driver.navigate().to("https://www.saucedemo.com/index.html");
+        driver.navigate().to(fileOperations.readProperties("src/main/resources/properties/url.properties", "url.login"));
     }
 
     @Test(dataProvider = "login-users", dataProviderClass = DataProviderClass.class)
@@ -26,9 +27,9 @@ public class LoginTestCase extends TestBase {
         login.efetuaLogin(user, password);
     }
 
-    @Test(dataProvider = "login-users-csv", dataProviderClass = DataProviderClass.class)
-    public void loginCsvTest(String user, String pass) {
-        login.efetuaLogin(user, pass);
-    }
+//    @Test(dataProvider = "login-users-csv", dataProviderClass = DataProviderClass.class)
+//    public void loginCsvTest(String user, String pass) {
+//        login.efetuaLogin(user, pass);
+//    }
 
 }

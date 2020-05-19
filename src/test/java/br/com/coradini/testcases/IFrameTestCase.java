@@ -1,22 +1,23 @@
-package testcases;
+package br.com.coradini.testcases;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 import support.ExtentTestManager;
+import utils.FileOperations;
 import utils.TestBase;
-import tasks.IFrameTasks;
+import br.com.coradini.tasks.IFrameTasks;
 
 public class IFrameTestCase extends TestBase {
 
-    private WebDriver driver = getDriver();
-    private IFrameTasks iFrameTasks = new IFrameTasks(driver);
+    private final WebDriver driver = getDriver();
+    private final IFrameTasks iFrameTasks = new IFrameTasks(driver);
+    private final FileOperations fileOperations = new FileOperations();
 
-    //TODO Criar arquivo de config com as URLs para os sites.
     @BeforeMethod
     public void setUp(ITestResult result) {
         ExtentTestManager.startTest(result.getMethod().getMethodName());
-        driver.navigate().to("http://the-internet.herokuapp.com/iframe");
+        driver.navigate().to(fileOperations.readProperties("src/main/resources/properties/url.properties", "url.iframe"));
     }
 
     @Test
